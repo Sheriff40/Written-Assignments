@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question_4(Syed Sheriff Hussain)</title>
+</head>
+<body>
+
+	<!-- Input HTML Element for taking a file as an input -->
+	<input type="file" onchange="filteration(event)" >
+
+	<!-- Div element used to displaying the result -->
+	<div id = "output"></div>
+
+	<script type="text/javascript">	
+		var div = document.getElementById("output");
+		var result;
+		function filteration(event){
+			
+			var input = event.target;
+
+			//Used a fileReader JS API for reading from files
+			var reader = new FileReader();
+
+			var count = 1, unique = "", repeated = "", eliminated = "";
+			
+
+			//To ensure that the program doesn't peform operations on file before it is read
+			reader.onload = function ()
+			{
+				result = reader.result;
+
+				//Split the result with spaces
+				var arr = result.split(" ");
+				   arr.forEach(function(value,index)
+				   {
+
+				   	//Initially search for the value and check if it is already in eliminated variable
+				   	if(eliminated.search(value.trim()) == -1)
+				   		{
+					   		for(var i = index+1 ; i<arr.length;i++)
+								{
+									if(value.trim() == arr[i].trim())
+									{
+										count++;
+									}
+								}
+
+							//If count>1, the words are repeated so store them in eliminated & repeated variables along with count
+							if(count > 1)
+								{
+									eliminated += value + " ";
+									repeated += value + "-" + count + " ";
+									count = 1;
+								}
+							else
+								{
+									unique += value + " ";
+								}
+				   		}
+					
+					});
+
+				   	//Output to the Div Element
+					div.innerText = "Duplicate words: " + repeated + "\nUnique words: " + unique + "\nDuplicate Eliminated: " +eliminated;
+				
+			}	
+
+			//Read the file as text, String format
+			reader.readAsText(input.files[0]);
+		}	
+	</script>
+</body>
+</html>

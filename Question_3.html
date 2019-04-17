@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question_3(Syed Sheriff Hussain)</title>
+</head>
+<body>
+
+	<!-- Onsubmit returns the result of the JS function validate. If false, the form is not submitted -->
+	<form name = "myForm"  method="GET" onsubmit="return validate()">
+		
+		<label>Bank:</label>
+		<select name = "Bank">
+			<option value = "Kumari Bank">Kumari Bank</option>
+			<option value = "Nic Asia">Nic Asia</option>
+		</select>
+		</br>
+		<label>Branch:</label>
+		<select name = "Branch">
+			<option value = "Putalisadak">Putalisadak</option>
+			<option value = "New Road">New Road</option>
+		</select>
+		</br>
+		<label>Account No: </label>
+		<input type = "number" name = "accNumber" />
+		</br>
+		<label>Amount: </label>
+		Saving<input type = "radio" name = "amount" value = "saving" name = "saving" />
+		Current<input type = "radio" name = "amount" value = "current" name = "current"/>
+		</br>
+		<input type="submit" value = "Submit" name = "submit">
+	
+	</form>
+
+
+
+<!-- JAVASCRIPT CODE FOR VALIDATION -->
+
+<script type="text/javascript">
+
+	function validate()
+		{
+			//Selects the HTML Form according their name and their element names
+			var x = document.forms["myForm"]["accNumber"].value;
+			
+			if(x == 0 || x == null)
+			{
+				alert("Account number can't be empty");
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		
+</script>
+</body>
+</html>

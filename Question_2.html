@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Question_2(Syed Sheriff Hussain)</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function test(array,number)
+	{
+		var status = 0;
+
+		//Convert the numer to String, so that the properties of String can be used such as .length
+		var num = number.toString();
+
+		//Do not proceed further if the lenghts of the array and number do not match initially
+		if(array.length != num.length)
+		{
+			return  status + "</br>";
+		}
+
+		//Array.every() returns false if a single condition returns false for the total elements in the array
+		else
+		{
+			status = array.every(function(value,index)
+			{
+				return (value == num[index]);	
+			})
+		}
+		
+		//return 1 if true, 0 if false
+		return ((status)?1:0) + "</br>";
+	}
+
+	//SOME RANDOM TEST CASES
+	document.write(test([8,5,7,6,9],85769));	
+	document.write(test([8,5,7,6],85769));
+	document.write(test([8,5,7,6,9,3],85769));	
+	document.write(test([1, 8,5,7,6],85769));
+	document.write(test([1,2,6,6,2],85769));	
+	document.write(test([0,8,5,7,6,9],85769));
+	document.write(test([1,2,3,6],1236));
+
+</script>
+</body>
+</html>
